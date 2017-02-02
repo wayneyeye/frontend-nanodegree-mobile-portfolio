@@ -5,6 +5,7 @@
 - 2. Set media query for the stylesheet (print.css) dedicated for printing purpose.
 - 3. Use internal font-family (sans-serif) instead of requesting from google fonts.
 - 4. Minify and inline style.css into html.
+- 5. Async blocking google analytics script tasks.
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
