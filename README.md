@@ -13,5 +13,5 @@
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
-- 1. Cancel the "unnecessary" animation of the random pizzas in the background layer. (reduce FSL)
+- 1. Cancel the "unnecessary" animation of the random pizzas in the background layer. (reduce FSL and adjust a little bit opacity...)
 
