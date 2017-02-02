@@ -3,6 +3,8 @@
 ### Below are the optimizations applied to the index.html
 - 1. Grunt the network-consuming images (pizzeria).
 - 2. Set media query for the stylesheet (print.css) dedicated for printing purpose.
+- 3. Use internal font-family (sans-serif) instead of requesting from google fonts.
+
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
