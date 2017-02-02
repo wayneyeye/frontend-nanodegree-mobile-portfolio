@@ -9,8 +9,10 @@
 - 6. Minify the final index.html file.
 
 
-### Part 2: Optimize Frames per Second in pizza.html
+### Part 2: Below are the actions taken to optimize FPS in the pizza.html
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+
+- 1. Improve the algorithm for update the "left" property. It greatly ease the burden from FSL. (main.js line 504, line 550-557).
 
 
