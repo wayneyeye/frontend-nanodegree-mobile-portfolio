@@ -508,7 +508,7 @@ function updatePositions() {
   var scrollTop = (document.body.scrollTop / 1250); // reduce time in requesting position
   var items = document.querySelectorAll('.mover'); 
   var phase = [];
-  groups = 4;
+  groups = 2;
   for (var i = 0; i < groups; i++) {
     phase[i] = Math.sin(scrollTop + (i % groups)); //reduce into 4 groups
   } //reduce calculation
@@ -535,12 +535,12 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 6;
   // console.log(window.screen.width/6);
-  var s = window.screen.width/6;
+  var s = window.screen.width/cols;
   var movingPizzas=document.querySelector("#movingPizzas1");
 
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
-    elem.className = 'mover';
+    elem.className = 'mover mover_'+i%cols;
     elem.src = "images/pizza-100_mobile.png"; // optimize pic size
     elem.style.height = "100px";
     elem.style.width = "73.333px";
