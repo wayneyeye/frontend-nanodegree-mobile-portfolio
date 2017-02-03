@@ -13,12 +13,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           engine: 'gm',
-          sizes: [{
-            /* Change these */
-            width: 1600,
-            suffix: '_large_2x',
-            quality: 30
-          },
+          sizes: [
           {
             /* Change these */
             width: 800,
@@ -35,6 +30,13 @@ module.exports = function(grunt) {
             /* Change these */
             width: 100,
             suffix: '_mobile',
+            quality: 100
+          },
+          ,
+          {
+            /* Change these */
+            width: 200,
+            suffix: '_mobile_2x',
             quality: 30
           }]
         },
@@ -55,7 +57,7 @@ module.exports = function(grunt) {
     /* Clear out the images directory if it exists */
     clean: {
       dev: {
-        src: ['images'],
+        src: ['img_optmzd'],
       },
     },
 
@@ -63,7 +65,7 @@ module.exports = function(grunt) {
     mkdir: {
       dev: {
         options: {
-          create: ['images']
+          create: ['img_optmzd']
         },
       },
     },
