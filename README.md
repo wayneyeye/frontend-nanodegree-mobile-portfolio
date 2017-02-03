@@ -22,8 +22,8 @@ The Chrome Dev Tool console will give you ideas of the website performance.
 
 
 ### Part 2: Below are the steps taken to optimize FPS in pizza.html
-- 1. Reduce the number of moving pizzas in the background. Improve the positioning algorithm to variable screen size. 
-- 2. Reduce object querying time by setting local variables
-- 3. Improve reflow algorithm and reduce FSL. (simplifies animation)
+- 1. Reduce the number of moving pizzas dynamically as a function to the screen size. Improve the positioning algorithm to variable screen size. 
+- 2. Reduce object querying time by setting local variables and using more efficient query apis.
+- 3. Improve update algorithm by eliminating unnecessarrary function calls.
 
 

@@ -473,8 +473,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -506,23 +506,15 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   var scrollTop = (document.body.scrollTop / 1250); // reduce time in requesting position
-  var items = document.querySelectorAll('.mover'); 
+  var items = document.getElementsByClassName('mover'); 
   var phase = [];
-  groups = 2;
-  for (var i = 0; i < groups; i++) {
-    phase[i] = Math.sin(scrollTop + (i % groups)); //reduce into 4 groups
+  for (var i = 0; i < 5; i++) {
+    phase[i] = Math.sin(scrollTop + (i)); //reduce into 4 groups
   } //reduce calculation
-
-  // for (var i = 0; i < items.length; i++) {
-  //   // var phase = Math.sin(scrollTop + (i % 4)); //reduce into 4 groups
-  //   items[i].style.left = items[i].basicLeft + 100 * phase[i%groups] + 'px';
-  // }
-
-  //use less reflow
-  for (var j = 0; j < 4; j++){
-    $(".mover_"+j).css("left", items[j].basicLeft + 100 * phase[j%groups]+'px');
+  for (var i = 0; i < items.length; i++) {
+    // var phase = Math.sin(scrollTop + (i % 4)); //reduce into 4 groups
+    items[i].style.left = items[i].basicLeft + 100 * phase[i%5] + 'px';
   }
-
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -538,20 +530,31 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 4;
+  //Adjust number of columns dynamically
+  var cols = 6;
+  if (window.screen.width<801) {
+  	cols = 3;
+  }
+  if (window.screen.width<401) {
+  	cols = 2;
+  }
+  if (window.screen.width<201) {
+  	cols = 1;
+  } 
+  var s = Math.floor(window.screen.width/cols);
   // console.log(window.screen.width/6);
-  var s = window.screen.width/cols;
-  var movingPizzas=document.querySelector("#movingPizzas1");
+  // console.log(s);
+  var numberOfPizzas=window.screen.height/s * cols;
+  var movingPizzas=document.getElementById("movingPizzas1");
 
-  for (var i = 0; i < 24; i++) {
+  for (var i = 0; i < numberOfPizzas; i++) {
     var elem = document.createElement('img');
-    elem.className = 'mover mover_'+i%cols;//divide into groups
+    elem.className = 'mover';
     elem.src = "images/pizza-100_mobile.png"; // optimize pic size
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.style.opacity= "0.5";
     elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * (window.screen.height/(24/cols))) + 'px';
+    elem.style.top = (Math.floor(i / cols) * (window.screen.height/(numberOfPizzas/cols))) + 'px';
     movingPizzas.appendChild(elem);
   }
   updatePositions();
