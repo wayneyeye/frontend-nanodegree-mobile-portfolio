@@ -505,11 +505,17 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
+  var scrollTop = (document.body.scrollTop / 1250); // reduce time in requesting position
+  var items = document.querySelectorAll('.mover'); 
+  var phase = [];
+  groups = 4;
+  for (var i = 0; i < groups; i++) {
+    phase[i] = Math.sin(scrollTop + (i % groups)); //reduce into 4 groups
+  }
 
-  var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    // var phase = Math.sin(scrollTop + (i % 4)); //reduce into 4 groups
+    items[i].style.left = items[i].basicLeft + 100 * phase[i%groups] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -528,7 +534,7 @@ window.addEventListener('scroll', updatePositions);
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 6;
-  console.log(window.screen.width/6);
+  // console.log(window.screen.width/6);
   var s = window.screen.width/6;
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
