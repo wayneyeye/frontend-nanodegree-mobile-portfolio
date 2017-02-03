@@ -513,9 +513,14 @@ function updatePositions() {
     phase[i] = Math.sin(scrollTop + (i % groups)); //reduce into 4 groups
   } //reduce calculation
 
-  for (var i = 0; i < items.length; i++) {
-    // var phase = Math.sin(scrollTop + (i % 4)); //reduce into 4 groups
-    items[i].style.left = items[i].basicLeft + 100 * phase[i%groups] + 'px';
+  // for (var i = 0; i < items.length; i++) {
+  //   // var phase = Math.sin(scrollTop + (i % 4)); //reduce into 4 groups
+  //   items[i].style.left = items[i].basicLeft + 100 * phase[i%groups] + 'px';
+  // }
+
+  //use less reflow
+  for (var j = 0; j < 4; j++){
+    $(".mover_"+j).css("left", items[j].basicLeft + 100 * phase[j%groups]+'px');
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -533,14 +538,14 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 6;
+  var cols = 4;
   // console.log(window.screen.width/6);
   var s = window.screen.width/cols;
   var movingPizzas=document.querySelector("#movingPizzas1");
 
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
-    elem.className = 'mover mover_'+i%cols;
+    elem.className = 'mover mover_'+i%cols;//divide into groups
     elem.src = "images/pizza-100_mobile.png"; // optimize pic size
     elem.style.height = "100px";
     elem.style.width = "73.333px";
