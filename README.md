@@ -18,6 +18,7 @@ The Chrome Dev Tool console will give you ideas of the website performance.
 - 4. Minify and inline style.css into html.
 - 5. Async blocking google analytics script tasks.
 - 6. Minify the final index.html file.
+- 7. Inline some of the jpg files to render more contents via the html request.
 
 
 ### Part 2: Below are the steps taken to optimize FPS in pizza.html
