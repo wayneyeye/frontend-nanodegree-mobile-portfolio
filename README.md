@@ -22,6 +22,8 @@ The Chrome Dev Tool console will give you ideas of the website performance.
 
 
 ### Part 2: Below are the steps taken to optimize FPS in pizza.html
-- 1. Cancel the "unnecessary" animation of the random pizzas in the background layer. (reduce FSL and adjust a little bit opacity...)
-- 2. Avoid FSL during rendering thru replacing the loop structure by jQuery selector. The css style thus can be modified in a single pass. (main.js line:451)
+- 1. Reduce the number of moving pizzas in the background. Improve the positioning algorithm to variable screen size. 
+- 2. Reduce object querying time by setting local variables
+- 3. Modify CSS to allow will-change: transform to boost the layout calculation.
+
 
