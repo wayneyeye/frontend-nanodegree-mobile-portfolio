@@ -511,7 +511,7 @@ function updatePositions() {
   groups = 4;
   for (var i = 0; i < groups; i++) {
     phase[i] = Math.sin(scrollTop + (i % groups)); //reduce into 4 groups
-  }
+  } //reduce calculation
 
   for (var i = 0; i < items.length; i++) {
     // var phase = Math.sin(scrollTop + (i % 4)); //reduce into 4 groups
@@ -536,6 +536,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 6;
   // console.log(window.screen.width/6);
   var s = window.screen.width/6;
+  var movingPizzas=document.querySelector("#movingPizzas1");
+
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -545,7 +547,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.opacity= "0.5";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * (window.screen.height/(24/cols))) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
