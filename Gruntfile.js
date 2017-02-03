@@ -30,6 +30,12 @@ module.exports = function(grunt) {
             width: 400,
             suffix: '_medium_1x',
             quality: 30
+          },
+          {
+            /* Change these */
+            width: 100,
+            suffix: '_mobile',
+            quality: 30
           }]
         },
 
@@ -40,7 +46,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           src: ['*.{gif,jpg,png}'],
-          cwd: 'views/images/',
+          cwd: 'img/',
           dest: 'img_optmzd/'
         }]
       }
